@@ -51,7 +51,7 @@ public class TaskService {
 
     public void deleteTask(Long Id){
         taskRepository.deleteById(Id);
-        log.info("Task with ID{} has been deleted.", Id);
+        log.atInfo().log("Task with ID{} has been deleted.", Id);
 
     }
 
