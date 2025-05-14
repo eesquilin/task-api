@@ -17,7 +17,7 @@ public class TaskService {
     private static final Logger log = LoggerFactory.getLogger(TaskService.class);
 
     @Autowired
-    private TaskRepository taskRepository;
+    public TaskRepository taskRepository;
 
     //method to create task
     public Task createTask(Task task){

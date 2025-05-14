@@ -20,7 +20,7 @@ public class TaskController {
     Task createTask(@RequestBody Task task){
         return taskService.createTask(task);
 
-    };
+    }
 
     @GetMapping("/tasks")
     List<Task> getAllTasks(){
