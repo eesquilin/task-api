@@ -5,8 +5,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-import java.util.Date;
-
 @Entity
 public class Task {
 
@@ -17,12 +15,12 @@ public class Task {
 
     private String title;
     private String description;
-    private Date dueDate;
+    private String dueDate;
     private TaskStatus taskStatus;
 
     public Task() {}
 
-    public Task(long id, String title, String description, Date dueDate, TaskStatus taskStatus) {
+    public Task(long id, String title, String description,  String dueDate, TaskStatus taskStatus) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -54,11 +52,11 @@ public class Task {
         this.description = description;
     }
 
-    public Date getDueDate() {
+    public String getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
     }
 
