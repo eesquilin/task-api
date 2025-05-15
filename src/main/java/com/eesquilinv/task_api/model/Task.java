@@ -1,4 +1,4 @@
-package model;
+package com.eesquilinv.task_api.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

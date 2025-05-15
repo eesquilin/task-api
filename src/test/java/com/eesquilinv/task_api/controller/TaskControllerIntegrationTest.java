@@ -1,7 +1,7 @@
 package com.eesquilinv.task_api.controller;
 
-import model.Task;
-import model.TaskStatus;
+import com.eesquilinv.task_api.model.Task;
+import com.eesquilinv.task_api.model.TaskStatus;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

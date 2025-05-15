@@ -1,11 +1,11 @@
-package service;
+package com.eesquilinv.task_api.service;
 
-import model.Task;
+import com.eesquilinv.task_api.model.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.TaskRepository;
+import com.eesquilinv.task_api.repository.TaskRepository;
 
 
 import java.util.List;
