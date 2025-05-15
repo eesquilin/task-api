@@ -23,6 +23,7 @@ public class TaskController {
     }
 
     @GetMapping("/tasks")
+    @ResponseBody
     List<Task> getAllTasks(){
         return taskService.getAllTask();
 
