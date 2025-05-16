@@ -16,15 +16,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class TaskControllerIntegrationTest {
 
-    @LocalServerPort
-    private int port;
 
     @Autowired
     TestRestTemplate testRestTemplate;
 
-    private String getUrl(){
-        return "localhost:" + port;
-    }
 
     @Test
     public void shouldCreateNewTask(){
@@ -44,8 +39,8 @@ public class TaskControllerIntegrationTest {
         assertEquals(TaskStatus.TODO, response.getBody().getTaskStatus());
 
     }
-
-    public void shouldReturnTaskById(Long Id){
+    @Test
+    public void shouldReturnTaskById(){
         Task newTask = new Task();
         newTask.setTitle("Test Task");
         newTask.setDueDate("2025-05-20");
@@ -56,6 +51,18 @@ public class TaskControllerIntegrationTest {
         ResponseEntity<Task> response = testRestTemplate.postForEntity("/tasks", newTask, Task.class);
 
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
+        Task createdTask = response.getBody();
+        assertNotNull(createdTask);
+        assertNotNull(createdTask.getId());
+
+        ResponseEntity<Task> retrievedResponse = testRestTemplate.getForEntity("/tasks/" + createdTask.getId(), Task.class);
+        assertEquals(HttpStatus.OK, retrievedResponse.getStatusCode());
+        assertNotNull(retrievedResponse.getBody());
+        assertEquals(createdTask.getId(), retrievedResponse.getBody().getId());
+        assertEquals("Test Task", retrievedResponse.getBody().getTitle());
+        assertEquals("2025-05-20", retrievedResponse.getBody().getDueDate());
+        assertEquals("This test retrieves task by id.", retrievedResponse.getBody().getDescription());
+        assertEquals(TaskStatus.INPROGRESS, retrievedResponse.getBody().getTaskStatus());
 
 
 
