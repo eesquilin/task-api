@@ -62,8 +62,25 @@ public class TaskControllerIntegrationTest {
         assertEquals("This test retrieves task by id.", retrievedResponse.getBody().getDescription());
         assertEquals(TaskStatus.INPROGRESS, retrievedResponse.getBody().getTaskStatus());
 
-
-
-
     }
+
+    @Test
+    public void shouldUpdateTaskTest(){
+        Task newTask = new Task();
+        newTask.setTitle("Test Task");
+        newTask.setDueDate("05-24-2024");
+        newTask.setDescription("Testing");
+        newTask.setTaskStatus(TaskStatus.INPROGRESS);
+
+        ResponseEntity<Task> response = testRestTemplate.postForEntity("/tasks/", newTask, Task.class);
+
+        Task createdTask = new Task();
+        createdTask.setId(newTask.getId());
+        createdTask.setTitle("Updated Task");
+
+        //ResponseEntity<Task> updatedResponse = testRestTemplate.put("/tasks/",createdTask);
+    }
+
+    @Test
+    public void shouldDeleteTaskTest(){}
 }
